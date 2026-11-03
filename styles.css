@@ -326,3 +326,63 @@ a.inline-link{ color:var(--text); text-decoration:underline; text-underline-offs
   .highlights{ padding:24px 48px 8px; }
   #panel-contact{ padding:44px 48px 52px; }
 }
+
+/* ============ Opening animation ============ */
+.intro{ display:none; }
+.intro-on .intro{ display:block; }
+html.intro-on, .intro-on body{ overflow:hidden; }
+.intro-on .card{ opacity:0; animation:none; }
+.intro-on .avatar{ visibility:hidden; }
+@media (prefers-reduced-motion: reduce){ .intro{ display:none !important; } }
+
+.intro{
+  --cam: min(86vw, 66vh, 640px);
+  --pic: min(56vmin, 340px);
+  position:fixed; inset:0; z-index:100; overflow:hidden;
+}
+.intro-stage{ position:absolute; inset:0; background:#efefef; }
+
+.intro-camera{
+  position:absolute; left:50%; top:50%;
+  width:var(--cam); height:var(--cam);
+  margin:calc(var(--cam) / -2) 0 0 calc(var(--cam) / -2);
+  transform-origin:58% 58.3%;
+  opacity:0; will-change:transform, opacity;
+}
+.intro-camera img{ width:100%; height:100%; display:block; }
+
+.intro-portrait{
+  position:absolute; left:50%; top:42%;
+  width:var(--pic); height:var(--pic);
+  margin:calc(var(--pic) / -2) 0 0 calc(var(--pic) / -2);
+  will-change:transform;
+}
+.intro-photo{ position:absolute; inset:0; overflow:hidden; opacity:0; }
+.intro-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.intro-ring{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; opacity:0; transform:rotate(-90deg); }
+.intro-ring circle{
+  fill:none; stroke:var(--text); stroke-width:.5;
+  stroke-dasharray:312.3; stroke-dashoffset:312.3;
+}
+
+.intro-name{
+  position:absolute; left:50%; top:calc(42% + var(--pic) / 2 + 30px);
+  width:min(90vw, 640px); margin:0 0 0 calc(min(90vw, 640px) / -2);
+  min-height:2.6em; text-align:center; opacity:0;
+  font-family:var(--font-display); font-weight:500; font-size:clamp(1.25rem, 4.2vw, 2.1rem);
+  line-height:1.25; color:var(--text); text-wrap:balance;
+}
+.intro-caret{
+  display:inline-block; width:2px; height:1em; margin-left:3px; vertical-align:-0.12em;
+  background:var(--text); animation:introCaret 1s steps(1) infinite;
+}
+@keyframes introCaret{ 50%{ opacity:0; } }
+
+.intro-skip{
+  position:absolute; right:20px; bottom:20px;
+  background:rgba(10,10,10,.55); color:var(--text); border:1px solid var(--border);
+  border-radius:999px; padding:8px 14px; cursor:pointer;
+  font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  backdrop-filter:blur(6px);
+}
+.intro-skip:hover{ border-color:var(--text-faint); }
