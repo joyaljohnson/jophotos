@@ -99,7 +99,7 @@ header{
   overflow:hidden; flex:none;
   border:1px solid var(--border);
 }
-.avatar svg{ display:block; width:100%; height:100%; }
+.avatar img{ display:block; width:100%; height:100%; object-fit:cover; }
 @media (min-width: 700px){
   .profile{ padding:30px 32px 18px; }
   .avatar{ width:104px; height:104px; }
@@ -161,16 +161,24 @@ a.inline-link{ color:var(--text); text-decoration:underline; text-underline-offs
   scrollbar-width:none;
 }
 .highlights::-webkit-scrollbar{ display:none; }
-.highlight{ flex:none; display:flex; flex-direction:column; align-items:center; gap:7px; width:62px; }
+.highlight{
+  flex:none; display:flex; flex-direction:column; align-items:center; gap:7px; width:62px;
+  background:none; border:none; padding:0; font:inherit; cursor:pointer;
+}
 .highlight .ring{
   width:62px; height:62px; border-radius:50%; border:1px solid var(--border);
   display:flex; align-items:center; justify-content:center; background:var(--bg-elevated);
+  overflow:hidden; transition:border-color .2s ease, box-shadow .2s ease;
 }
+.highlight .ring img{ width:100%; height:100%; object-fit:cover; display:block; }
 .highlight svg{ width:26px; height:26px; stroke:var(--text-dim); }
 .highlight small{
   font-family:var(--font-mono); font-size:.6rem; letter-spacing:.08em;
-  color:var(--text-faint); text-transform:uppercase; text-align:center;
+  color:var(--text-faint); text-transform:uppercase; text-align:center; transition:color .2s ease;
 }
+.highlight:hover .ring{ border-color:var(--text-faint); }
+.highlight.active .ring{ border-color:var(--accent); box-shadow:0 0 0 2px var(--bg-card), 0 0 0 3px var(--accent); }
+.highlight.active small{ color:var(--text); }
 @media (min-width: 700px){
   .highlights{ padding:22px 32px 6px; gap:26px; }
   .highlight{ width:74px; }
@@ -204,8 +212,9 @@ a.inline-link{ color:var(--text); text-decoration:underline; text-underline-offs
 .grid-photo{
   position:relative; aspect-ratio:1/1; overflow:hidden; cursor:pointer; background:#000;
 }
-.grid-photo svg{ width:100%; height:100%; display:block; transition:transform .5s ease; }
-.grid-photo:hover svg{ transform:scale(1.06); }
+.grid-photo[hidden]{ display:none; }
+.grid-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+.grid-photo:hover img{ transform:scale(1.04); }
 .grid-photo figcaption{
   position:absolute; left:0; right:0; bottom:0; padding:8px 9px 7px;
   font-family:var(--font-mono); font-size:.6rem; letter-spacing:.02em; line-height:1.35;
@@ -266,19 +275,19 @@ a.inline-link{ color:var(--text); text-decoration:underline; text-underline-offs
   position:absolute; inset:0; background:rgba(0,0,0,.88);
 }
 .lightbox-content{
-  position:relative; z-index:1; width:100%; max-width:680px; max-height:100%;
+  position:relative; z-index:1; width:100%; max-width:1040px; max-height:100%;
   background:var(--bg-card); border:1px solid var(--border); border-radius:16px;
   overflow:auto; display:flex; flex-direction:column;
   animation: pop .22s ease both;
 }
 @keyframes pop{ from{ opacity:0; transform:scale(.97);} to{ opacity:1; transform:none;} }
-@media (min-width: 560px){
-  .lightbox-content{ flex-direction:row; max-height:min(600px, 90vh); }
-  .lightbox-media{ width:52%; flex:none; }
-  .lightbox-info{ width:48%; }
+.lightbox-media{ aspect-ratio:4/5; max-height:62vh; background:#000; flex:none; }
+.lightbox-media img{ width:100%; height:100%; object-fit:contain; display:block; }
+@media (min-width: 640px){
+  .lightbox-content{ flex-direction:row; height:min(760px, 90vh); }
+  .lightbox-media{ flex:1; min-width:0; aspect-ratio:auto; max-height:none; }
+  .lightbox-info{ width:300px; flex:none; }
 }
-.lightbox-media{ aspect-ratio:1/1; background:#000; flex:none; }
-.lightbox-media svg{ width:100%; height:100%; display:block; }
 .lightbox-info{ padding:22px 22px 24px; display:flex; flex-direction:column; gap:14px; overflow:auto; }
 .lightbox-index{
   font-family:var(--font-mono); font-size:.66rem; letter-spacing:.14em; color:var(--text-faint);
@@ -289,6 +298,7 @@ a.inline-link{ color:var(--text); text-decoration:underline; text-underline-offs
 }
 .lightbox-meta{ margin:0; display:flex; flex-direction:column; gap:10px; }
 .lightbox-meta div{ display:flex; flex-direction:column; gap:2px; }
+.lightbox-meta div[hidden]{ display:none; }
 .lightbox-meta dt{
   font-family:var(--font-mono); font-size:.6rem; letter-spacing:.12em; color:var(--text-faint);
   text-transform:uppercase;

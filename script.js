@@ -60,51 +60,59 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
   e.target.reset();
 });
 
-// lightbox — clicking a grid photo opens it with its caption and details
+// collection filter — the circles above the grid
 const figures = Array.from(document.querySelectorAll('.grid-photo'));
+const filterButtons = Array.from(document.querySelectorAll('.highlight'));
+const COLLECTION_NAMES = { 'grey-spot': 'Grey Spot', 'seasons': 'Seasons' };
+
+function visibleFigures() {
+  return figures.filter(f => !f.hidden);
+}
+
+function applyFilter(name) {
+  figures.forEach(f => { f.hidden = name !== 'all' && f.dataset.collection !== name; });
+  filterButtons.forEach(b => {
+    const on = b.dataset.filter === name;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+}
+
+filterButtons.forEach(b => {
+  b.addEventListener('click', () => {
+    const already = b.classList.contains('active');
+    applyFilter(already ? 'all' : b.dataset.filter);
+  });
+});
+
+// lightbox — clicking a grid photo opens it larger, with its caption and details
 const lightbox = document.getElementById('lightbox');
 const lbMedia = document.getElementById('lightboxMedia');
 const lbIndex = document.getElementById('lightboxIndex');
 const lbTitle = document.getElementById('lightboxTitle');
-const lbGenre = document.getElementById('lightboxGenre');
-const lbYear = document.getElementById('lightboxYear');
+const lbCollection = document.getElementById('lightboxCollection');
+const lbNoteRow = document.getElementById('lightboxNoteRow');
 const lbNote = document.getElementById('lightboxNote');
 let currentPhoto = 0;
 let lastFocused = null;
 
-// clones a figure's <svg> and renames its internal ids so gradient/filter
-// references stay unique when the same artwork exists twice in the document
-function cloneArt(svg, suffix) {
-  const clone = svg.cloneNode(true);
-  const idMap = {};
-  clone.querySelectorAll('[id]').forEach(el => {
-    const fresh = el.id + '-' + suffix;
-    idMap[el.id] = fresh;
-    el.id = fresh;
-  });
-  clone.querySelectorAll('*').forEach(el => {
-    ['fill', 'stroke', 'filter'].forEach(attr => {
-      const val = el.getAttribute(attr);
-      if (val && val.startsWith('url(#')) {
-        const oldId = val.slice(5, -1);
-        if (idMap[oldId]) el.setAttribute(attr, 'url(#' + idMap[oldId] + ')');
-      }
-    });
-  });
-  return clone;
-}
-
 function openLightbox(i) {
-  currentPhoto = (i + figures.length) % figures.length;
-  const fig = figures[currentPhoto];
-  const svg = fig.querySelector('svg');
-  lbMedia.replaceChildren(cloneArt(svg, 'lb'));
-  lbIndex.textContent = String(currentPhoto + 1).padStart(2, '0') + ' / ' + String(figures.length).padStart(2, '0');
+  const list = visibleFigures();
+  if (!list.length) return;
+  currentPhoto = (i + list.length) % list.length;
+  const fig = list[currentPhoto];
+  const thumb = fig.querySelector('img');
+  const img = document.createElement('img');
+  img.src = thumb.currentSrc || thumb.src;
+  img.alt = fig.dataset.title;
+  lbMedia.replaceChildren(img);
+  lbIndex.textContent = String(currentPhoto + 1).padStart(2, '0') + ' / ' + String(list.length).padStart(2, '0');
   lbTitle.textContent = fig.dataset.title;
-  lbGenre.textContent = fig.dataset.genre;
-  lbYear.textContent = fig.dataset.year;
-  lbNote.textContent = fig.dataset.note;
-  lastFocused = document.activeElement;
+  lbCollection.textContent = COLLECTION_NAMES[fig.dataset.collection] || fig.dataset.collection;
+  const note = fig.dataset.note || '';
+  lbNote.textContent = note;
+  lbNoteRow.hidden = !note;
+  if (lightbox.hidden) lastFocused = document.activeElement;
   lightbox.hidden = false;
   document.getElementById('lightboxClose').focus();
 }
@@ -115,10 +123,11 @@ function closeLightbox() {
   if (lastFocused) lastFocused.focus();
 }
 
-figures.forEach((fig, i) => {
-  fig.addEventListener('click', () => openLightbox(i));
+figures.forEach(fig => {
+  const open = () => openLightbox(visibleFigures().indexOf(fig));
+  fig.addEventListener('click', open);
   fig.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
   });
 });
 

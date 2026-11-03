@@ -29,23 +29,12 @@
 
   <section class="profile">
     <div class="profile-top">
-      <div class="avatar" aria-hidden="true">
-        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="av" cx="38%" cy="32%" r="75%">
-              <stop offset="0%" stop-color="#b6b6b6"/>
-              <stop offset="35%" stop-color="#4d4d4d"/>
-              <stop offset="100%" stop-color="#0a0a0a"/>
-            </radialGradient>
-            <filter id="avGrain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer><feComposite operator="over" in2="SourceGraphic"/></filter>
-          </defs>
-          <rect width="200" height="200" fill="url(#av)"/>
-          <rect width="200" height="200" filter="url(#avGrain)"/>
-        </svg>
+      <div class="avatar">
+        <img src="assets/avatar.jpg" alt="Joyal Johnson" width="280" height="280">
       </div>
       <div class="stats">
-        <div class="stat"><b>7</b><span>Posts</span></div>
-        <div class="stat"><b>5</b><span>Genres</span></div>
+        <div class="stat"><b id="postCount">36</b><span>Posts</span></div>
+        <div class="stat"><b>2</b><span>Collections</span></div>
         <div class="stat"><b>2016</b><span>Est.</span></div>
       </div>
     </div>
@@ -71,27 +60,19 @@
     </div>
   </section>
 
-  <div class="highlights">
-    <div class="highlight">
-      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13.5" r="3.2"/></svg></div>
-      <small>Portraits</small>
-    </div>
-    <div class="highlight">
-      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20l4-9 3 5 2-4 5 8"/><circle cx="17" cy="5" r="2"/></svg></div>
-      <small>Street</small>
-    </div>
-    <div class="highlight">
-      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 8h18M3 16h18M7 4v4M7 16v4M17 4v4M17 16v4"/></svg></div>
-      <small>Film</small>
-    </div>
-    <div class="highlight">
-      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6 6-2z"/></svg></div>
-      <small>Travel</small>
-    </div>
-    <div class="highlight">
-      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l5-3 4 2 4-2 5 3v9l-5 3-4-2-4 2-5-3z"/><path d="M8 5v11M16 7v11"/></svg></div>
-      <small>BTS</small>
-    </div>
+  <div class="highlights" role="group" aria-label="Filter photos by collection">
+    <button type="button" class="highlight active" data-filter="all" aria-pressed="true">
+      <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>
+      <small>All</small>
+    </button>
+    <button type="button" class="highlight" data-filter="grey-spot" aria-pressed="false">
+      <span class="ring"><img src="assets/photos/grey-spot-11.jpg" alt="" width="736" height="920" loading="lazy"></span>
+      <small>Grey Spot</small>
+    </button>
+    <button type="button" class="highlight" data-filter="seasons" aria-pressed="false">
+      <span class="ring"><img src="assets/photos/seasons-10.jpg" alt="" width="736" height="971" loading="lazy"></span>
+      <small>Seasons</small>
+    </button>
   </div>
 
   <div class="tabs">
@@ -108,95 +89,184 @@
   <div class="panel active" id="panel-grid">
     <div class="grid">
 
-      <figure class="grid-photo" tabindex="0" data-index="0" data-title="Face, half in shadow" data-genre="Portraits" data-year="2023" data-note="Window light, no fill. She didn't know the shutter had gone.">
-        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="g1" cx="30%" cy="28%" r="70%">
-              <stop offset="0%" stop-color="#999999"/><stop offset="40%" stop-color="#383838"/><stop offset="100%" stop-color="#050505"/>
-            </radialGradient>
-          </defs>
-          <rect width="300" height="300" fill="url(#g1)"/>
-          <ellipse cx="150" cy="235" rx="150" ry="70" fill="#000" opacity=".55"/>
-        </svg>
-        <figcaption>01 — Face, half in shadow</figcaption>
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Silhouette beside a bright train window">
+        <img src="assets/photos/grey-spot-01.jpg" alt="Silhouette beside a bright train window" width="736" height="920" decoding="async">
+        <figcaption>Silhouette beside a bright train window</figcaption>
       </figure>
 
-      <figure class="grid-photo" tabindex="0" data-index="1" data-title="Rembrandt light, portrait" data-genre="Portraits" data-year="2019" data-note="Single softbox, 45 degrees. The oldest trick still works.">
-        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#050505"/><stop offset="52%" stop-color="#3b3b3b"/><stop offset="60%" stop-color="#b0b0b0"/><stop offset="100%" stop-color="#0a0a0a"/>
-            </linearGradient>
-          </defs>
-          <rect width="300" height="300" fill="url(#g2)"/>
-        </svg>
-        <figcaption>02 — Rembrandt light, portrait</figcaption>
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="A single lit window in a dark room">
+        <img src="assets/photos/grey-spot-02.jpg" alt="A single lit window in a dark room" width="736" height="920" decoding="async">
+        <figcaption>A single lit window in a dark room</figcaption>
       </figure>
 
-      <figure class="grid-photo" tabindex="0" data-index="2" data-title="Crossing, rain at night" data-genre="Street" data-year="2021" data-note="Long lens, wet asphalt, three frames before he looked up.">
-        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#020202"/><stop offset="70%" stop-color="#141414"/><stop offset="100%" stop-color="#2e2e2e"/>
-            </linearGradient>
-          </defs>
-          <rect width="300" height="300" fill="url(#g3)"/>
-          <g stroke="#cccccc" stroke-width="2" opacity=".55">
-            <line x1="70" y1="0" x2="55" y2="300"/><line x1="160" y1="0" x2="150" y2="300"/><line x1="230" y1="0" x2="245" y2="300"/>
-          </g>
-          <ellipse cx="150" cy="300" rx="170" ry="40" fill="#e0e0e0" opacity=".18"/>
-        </svg>
-        <figcaption>03 — Crossing, rain at night</figcaption>
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Man in a white shirt seated beside a desk">
+        <img src="assets/photos/grey-spot-03.jpg" alt="Man in a white shirt seated beside a desk" width="736" height="920" decoding="async">
+        <figcaption>Man in a white shirt seated beside a desk</figcaption>
       </figure>
 
-      <figure class="grid-photo" tabindex="0" data-index="3" data-title="Rippling water, macro" data-genre="Film" data-year="2020" data-note="35mm Tri-X, pushed a stop. Grain became the subject.">
-        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <filter id="g4f"><feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" seed="7"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="linear" slope="1.4" intercept="-.15"/><feFuncG type="linear" slope="1.4" intercept="-.15"/><feFuncB type="linear" slope="1.4" intercept="-.15"/></feComponentTransfer></filter>
-          </defs>
-          <rect width="300" height="300" fill="#111"/>
-          <rect width="300" height="300" filter="url(#g4f)"/>
-        </svg>
-        <figcaption>04 — Rippling water, macro</figcaption>
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Hanging train straps against a diagonal beam of light">
+        <img src="assets/photos/grey-spot-04.jpg" alt="Hanging train straps against a diagonal beam of light" width="736" height="920" decoding="async">
+        <figcaption>Hanging train straps against a diagonal beam of light</figcaption>
       </figure>
 
-      <figure class="grid-photo" tabindex="0" data-index="4" data-title="Diner, harsh window light" data-genre="Street" data-year="2018" data-note="6am, before the regulars arrived.">
-        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
-          <rect width="300" height="300" fill="#050505"/>
-          <rect x="0" y="0" width="300" height="120" fill="#1a1a1a"/>
-          <rect x="40" y="0" width="60" height="120" fill="#c4c4c4" opacity=".8"/>
-          <rect x="150" y="0" width="60" height="120" fill="#868686" opacity=".55"/>
-          <rect x="0" y="120" width="300" height="14" fill="#222222"/>
-          <g fill="#242424"><rect x="20" y="150" width="40" height="60"/><rect x="80" y="150" width="40" height="60"/><rect x="140" y="150" width="40" height="60"/><rect x="200" y="150" width="40" height="60"/></g>
-        </svg>
-        <figcaption>05 — Diner, harsh window light</figcaption>
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Four men standing in a doorway, lit from behind">
+        <img src="assets/photos/grey-spot-05.jpg" alt="Four men standing in a doorway, lit from behind" width="736" height="920" decoding="async">
+        <figcaption>Four men standing in a doorway, lit from behind</figcaption>
       </figure>
 
-      <figure class="grid-photo" tabindex="0" data-index="5" data-title="Mountain road, fog" data-genre="Travel" data-year="2022" data-note="Shot from the passenger seat, engine off.">
-        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="g6" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#cacaca"/><stop offset="35%" stop-color="#767676"/><stop offset="65%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#080808"/>
-            </linearGradient>
-          </defs>
-          <rect width="300" height="300" fill="url(#g6)"/>
-          <path d="M150 40 C 130 110, 190 150, 140 210 S 170 300 150 300" fill="none" stroke="#e2e2e2" stroke-width="6" opacity=".5"/>
-        </svg>
-        <figcaption>06 — Mountain road, fog</figcaption>
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Train straps hanging beneath bright ceiling windows">
+        <img src="assets/photos/grey-spot-06.jpg" alt="Train straps hanging beneath bright ceiling windows" width="736" height="920" decoding="async">
+        <figcaption>Train straps hanging beneath bright ceiling windows</figcaption>
       </figure>
 
-      <figure class="grid-photo" tabindex="0" data-index="6" data-title="Vintage camera, studio" data-genre="BTS" data-year="2016" data-note="The camera that started all of this.">
-        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="g7" cx="50%" cy="42%" r="65%">
-              <stop offset="0%" stop-color="#9e9e9e"/><stop offset="55%" stop-color="#282828"/><stop offset="100%" stop-color="#020202"/>
-            </radialGradient>
-          </defs>
-          <rect width="300" height="300" fill="url(#g7)"/>
-          <rect x="118" y="128" width="64" height="42" rx="6" fill="#0a0a0a" opacity=".9"/>
-          <circle cx="150" cy="149" r="14" fill="#3a3a3a"/>
-        </svg>
-        <figcaption>07 — Vintage camera, studio</figcaption>
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Sunlit roof windows and a curved column in shadow">
+        <img src="assets/photos/grey-spot-07.jpg" alt="Sunlit roof windows and a curved column in shadow" width="736" height="920" decoding="async">
+        <figcaption>Sunlit roof windows and a curved column in shadow</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="A glowing ornament held up in a dark room">
+        <img src="assets/photos/grey-spot-08.jpg" alt="A glowing ornament held up in a dark room" width="736" height="920" decoding="async">
+        <figcaption>A glowing ornament held up in a dark room</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Skylight panels above a dark hall">
+        <img src="assets/photos/grey-spot-09.jpg" alt="Skylight panels above a dark hall" width="736" height="920" decoding="async">
+        <figcaption>Skylight panels above a dark hall</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="A dome of the Taj Mahal against a pale sky">
+        <img src="assets/photos/grey-spot-10.jpg" alt="A dome of the Taj Mahal against a pale sky" width="736" height="920" decoding="async">
+        <figcaption>A dome of the Taj Mahal against a pale sky</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="The Taj Mahal framed by a dark arched doorway">
+        <img src="assets/photos/grey-spot-11.jpg" alt="The Taj Mahal framed by a dark arched doorway" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>The Taj Mahal framed by a dark arched doorway</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Two small lit windows in a dark wall">
+        <img src="assets/photos/grey-spot-12.jpg" alt="Two small lit windows in a dark wall" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Two small lit windows in a dark wall</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="A dim interior with a bright display on the wall">
+        <img src="assets/photos/grey-spot-13.jpg" alt="A dim interior with a bright display on the wall" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A dim interior with a bright display on the wall</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Concrete walls rising towards a cloudy sky">
+        <img src="assets/photos/grey-spot-14.jpg" alt="Concrete walls rising towards a cloudy sky" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Concrete walls rising towards a cloudy sky</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Train carriage C113 with a figure at the window">
+        <img src="assets/photos/grey-spot-15.jpg" alt="Train carriage C113 with a figure at the window" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Train carriage C113 with a figure at the window</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Station pillars and a signboard in deep shadow">
+        <img src="assets/photos/grey-spot-16.jpg" alt="Station pillars and a signboard in deep shadow" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Station pillars and a signboard in deep shadow</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="A building seen across a rooftop under a pale sky">
+        <img src="assets/photos/grey-spot-17.jpg" alt="A building seen across a rooftop under a pale sky" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A building seen across a rooftop under a pale sky</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="An escalator descending in sharp perspective">
+        <img src="assets/photos/grey-spot-18.jpg" alt="An escalator descending in sharp perspective" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>An escalator descending in sharp perspective</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="A dark hall interior with tall windows">
+        <img src="assets/photos/grey-spot-19.jpg" alt="A dark hall interior with tall windows" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A dark hall interior with tall windows</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="A person at a table with glasses, backlit by a glowing ornament">
+        <img src="assets/photos/grey-spot-20.jpg" alt="A person at a table with glasses, backlit by a glowing ornament" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A person at a table with glasses, backlit by a glowing ornament</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="A train grab handle and rail in raking light">
+        <img src="assets/photos/grey-spot-21.jpg" alt="A train grab handle and rail in raking light" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A train grab handle and rail in raking light</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Bands of light across a dark wall">
+        <img src="assets/photos/grey-spot-22.jpg" alt="Bands of light across a dark wall" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Bands of light across a dark wall</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Silhouettes in front of a window and a sign">
+        <img src="assets/photos/grey-spot-23.jpg" alt="Silhouettes in front of a window and a sign" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Silhouettes in front of a window and a sign</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Two silhouetted figures and a clock tower in a bright window">
+        <img src="assets/photos/grey-spot-24.jpg" alt="Two silhouetted figures and a clock tower in a bright window" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Two silhouetted figures and a clock tower in a bright window</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="grey-spot" data-title="Slats of skylight on a dark ceiling">
+        <img src="assets/photos/grey-spot-25.jpg" alt="Slats of skylight on a dark ceiling" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Slats of skylight on a dark ceiling</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="The UWS sign beneath autumn trees" data-note="Autumn hit different this year. New place, new dreams, new version of me. Grateful for the chance to start over and see where this path leads.">
+        <img src="assets/photos/seasons-01.jpg" alt="The UWS sign beneath autumn trees" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>The UWS sign beneath autumn trees</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="A hand raised against low sunlight" data-note="Funny how the sun hits warm, but nothing else does. I keep reaching… not sure what for anymore. It’s strange how emptiness feels heavier than anything. Hope!">
+        <img src="assets/photos/seasons-02.jpg" alt="A hand raised against low sunlight" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A hand raised against low sunlight</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="A gate at the end of a leaf-covered path" data-note="Autumn days">
+        <img src="assets/photos/seasons-03.jpg" alt="A gate at the end of a leaf-covered path" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A gate at the end of a leaf-covered path</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="Two walkers on a park lawn beneath autumn trees">
+        <img src="assets/photos/seasons-04.jpg" alt="Two walkers on a park lawn beneath autumn trees" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Two walkers on a park lawn beneath autumn trees</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="Ducks on a pond beneath autumn trees">
+        <img src="assets/photos/seasons-05.jpg" alt="Ducks on a pond beneath autumn trees" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Ducks on a pond beneath autumn trees</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="A path winding through an avenue of autumn trees">
+        <img src="assets/photos/seasons-06.jpg" alt="A path winding through an avenue of autumn trees" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A path winding through an avenue of autumn trees</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="A duck on still water reflecting autumn trees">
+        <img src="assets/photos/seasons-07.jpg" alt="A duck on still water reflecting autumn trees" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A duck on still water reflecting autumn trees</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="A daisy in dark grass">
+        <img src="assets/photos/seasons-08.jpg" alt="A daisy in dark grass" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A daisy in dark grass</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="A duck on rippling water beside autumn trees">
+        <img src="assets/photos/seasons-09.jpg" alt="A duck on rippling water beside autumn trees" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A duck on rippling water beside autumn trees</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="A lamp-lit avenue of autumn trees">
+        <img src="assets/photos/seasons-10.jpg" alt="A lamp-lit avenue of autumn trees" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>A lamp-lit avenue of autumn trees</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-collection="seasons" data-title="Fallen maple leaves on a wooden bench in sunbeams">
+        <img src="assets/photos/seasons-11.jpg" alt="Fallen maple leaves on a wooden bench in sunbeams" width="736" height="920" loading="lazy" decoding="async">
+        <figcaption>Fallen maple leaves on a wooden bench in sunbeams</figcaption>
       </figure>
 
     </div>
@@ -237,9 +307,8 @@
       <p class="lightbox-index" id="lightboxIndex">01 / 07</p>
       <h3 id="lightboxTitle"></h3>
       <dl class="lightbox-meta">
-        <div><dt>Genre</dt><dd id="lightboxGenre"></dd></div>
-        <div><dt>Year</dt><dd id="lightboxYear"></dd></div>
-        <div><dt>Notes</dt><dd id="lightboxNote"></dd></div>
+        <div><dt>Collection</dt><dd id="lightboxCollection"></dd></div>
+        <div id="lightboxNoteRow"><dt>Caption</dt><dd id="lightboxNote"></dd></div>
       </dl>
       <div class="lightbox-nav">
         <button type="button" id="lightboxPrev">‹ Prev</button>
