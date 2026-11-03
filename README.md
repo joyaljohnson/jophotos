@@ -24,7 +24,7 @@ Pushing to `main` deploys the site to GitHub Pages via `.github/workflows/static
 
 ## Notes
 
-- Photos live in `assets/photos/` (`grey-spot-*` and `seasons-*`), taken from the Pinterest boards "Grey Spot" and "Seasons". The Seasons photos were autumn colour originals and have been converted to black and white.
+- Photos live in `assets/photos/` (`grey-spot-*` and `seasons-*`), taken from the Pinterest boards "Grey Spot" and "Seasons". Grey Spot is black and white; Seasons is shown in its original colour.
 - To add a photo, drop the file in `assets/photos/` and add a `<figure class="grid-photo">` in `index.html` with `data-collection` (`grey-spot` or `seasons`), `data-title`, and optionally `data-note` (caption shown in the lightbox).
 - The circles above the grid filter by collection; click the active one again to show everything.
 - The enquiry form is front-end only and does not send messages anywhere yet.
