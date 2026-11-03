@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>callmejo</title>
+<meta name="description" content="Black-and-white photography by Joyal Johnson (Jo): portraits, street and quiet frames. Based in Paisley, Scotland.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' text-anchor='middle' fill='%23f2f2f2'%3Ej%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="sprockets left" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+<div class="sprockets right" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<main class="card">
+
+  <header>
+    <span class="wordmark">callmejo</span>
+    <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></svg>
+    </button>
+    <nav class="menu-panel" id="menuPanel">
+      <a href="#" data-panel="panel-grid" data-close>Work</a>
+      <a href="#" data-panel="panel-contact" data-close>Enquire</a>
+    </nav>
+  </header>
+
+  <section class="profile">
+    <div class="profile-top">
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="av" cx="38%" cy="32%" r="75%">
+              <stop offset="0%" stop-color="#b6b6b6"/>
+              <stop offset="35%" stop-color="#4d4d4d"/>
+              <stop offset="100%" stop-color="#0a0a0a"/>
+            </radialGradient>
+            <filter id="avGrain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer><feComposite operator="over" in2="SourceGraphic"/></filter>
+          </defs>
+          <rect width="200" height="200" fill="url(#av)"/>
+          <rect width="200" height="200" filter="url(#avGrain)"/>
+        </svg>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>7</b><span>Posts</span></div>
+        <div class="stat"><b>5</b><span>Genres</span></div>
+        <div class="stat"><b>2016</b><span>Est.</span></div>
+      </div>
+    </div>
+
+    <p class="name">callmejo</p>
+    <div class="bio" id="bio">
+      <p>I’m Joyal Johnson, Jo for short. My journey started in Kerala and brought me to Paisley, Scotland, and my camera has been with me the whole way.</p>
+      <div class="bio-rest">
+        <p>I’m drawn to light: the way autumn sets the trees on fire, how neon turns a fairground into something cinematic, how a single beam of sun can make an ordinary moment feel like a memory. At events, I’m the one in the crowd catching the laugh mid-dance rather than the stiff group pose (though I’ll get that too).</p>
+        <p>This site is a small, hand-picked selection of my work, not everything I shoot. For the day-to-day, you’ll find me on Instagram at <a class="inline-link" href="https://instagram.com/ig.callmejo" target="_blank" rel="noopener noreferrer">@ig.callmejo</a>.</p>
+        <p>Outside photography I work in digital marketing, so I understand what a good image has to do for a brand, a society or an event, as well as how it looks.</p>
+        <p>Don’t let your passion fade away. This is how I keep mine alive.</p>
+        <p><span class="mail-emoji" aria-hidden="true">📩</span> Got an event, shoot or idea? <button type="button" class="inline-link" id="talkBtn">Let’s talk.</button></p>
+      </div>
+      <button class="more-btn" id="moreBtn" aria-expanded="false">more</button>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="enquireBtn">Enquire</button>
+      <button class="btn btn-secondary" id="shareBtn">Share profile
+        <span class="toast" id="shareToast">Link copied</span>
+      </button>
+    </div>
+  </section>
+
+  <div class="highlights">
+    <div class="highlight">
+      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13.5" r="3.2"/></svg></div>
+      <small>Portraits</small>
+    </div>
+    <div class="highlight">
+      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20l4-9 3 5 2-4 5 8"/><circle cx="17" cy="5" r="2"/></svg></div>
+      <small>Street</small>
+    </div>
+    <div class="highlight">
+      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 8h18M3 16h18M7 4v4M7 16v4M17 4v4M17 16v4"/></svg></div>
+      <small>Film</small>
+    </div>
+    <div class="highlight">
+      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6 6-2z"/></svg></div>
+      <small>Travel</small>
+    </div>
+    <div class="highlight">
+      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l5-3 4 2 4-2 5 3v9l-5 3-4-2-4 2-5-3z"/><path d="M8 5v11M16 7v11"/></svg></div>
+      <small>BTS</small>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-panel="panel-grid">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Grid
+    </button>
+    <button class="tab" data-panel="panel-contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3L2 10l7 3.5M22 3L15 21l-6-7.5M22 3L9 13.5"/></svg>
+      Enquiries
+    </button>
+  </div>
+
+  <div class="panel active" id="panel-grid">
+    <div class="grid">
+
+      <figure class="grid-photo" tabindex="0" data-index="0" data-title="Face, half in shadow" data-genre="Portraits" data-year="2023" data-note="Window light, no fill. She didn't know the shutter had gone.">
+        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="g1" cx="30%" cy="28%" r="70%">
+              <stop offset="0%" stop-color="#999999"/><stop offset="40%" stop-color="#383838"/><stop offset="100%" stop-color="#050505"/>
+            </radialGradient>
+          </defs>
+          <rect width="300" height="300" fill="url(#g1)"/>
+          <ellipse cx="150" cy="235" rx="150" ry="70" fill="#000" opacity=".55"/>
+        </svg>
+        <figcaption>01 — Face, half in shadow</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-index="1" data-title="Rembrandt light, portrait" data-genre="Portraits" data-year="2019" data-note="Single softbox, 45 degrees. The oldest trick still works.">
+        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#050505"/><stop offset="52%" stop-color="#3b3b3b"/><stop offset="60%" stop-color="#b0b0b0"/><stop offset="100%" stop-color="#0a0a0a"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="300" fill="url(#g2)"/>
+        </svg>
+        <figcaption>02 — Rembrandt light, portrait</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-index="2" data-title="Crossing, rain at night" data-genre="Street" data-year="2021" data-note="Long lens, wet asphalt, three frames before he looked up.">
+        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#020202"/><stop offset="70%" stop-color="#141414"/><stop offset="100%" stop-color="#2e2e2e"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="300" fill="url(#g3)"/>
+          <g stroke="#cccccc" stroke-width="2" opacity=".55">
+            <line x1="70" y1="0" x2="55" y2="300"/><line x1="160" y1="0" x2="150" y2="300"/><line x1="230" y1="0" x2="245" y2="300"/>
+          </g>
+          <ellipse cx="150" cy="300" rx="170" ry="40" fill="#e0e0e0" opacity=".18"/>
+        </svg>
+        <figcaption>03 — Crossing, rain at night</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-index="3" data-title="Rippling water, macro" data-genre="Film" data-year="2020" data-note="35mm Tri-X, pushed a stop. Grain became the subject.">
+        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <filter id="g4f"><feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" seed="7"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="linear" slope="1.4" intercept="-.15"/><feFuncG type="linear" slope="1.4" intercept="-.15"/><feFuncB type="linear" slope="1.4" intercept="-.15"/></feComponentTransfer></filter>
+          </defs>
+          <rect width="300" height="300" fill="#111"/>
+          <rect width="300" height="300" filter="url(#g4f)"/>
+        </svg>
+        <figcaption>04 — Rippling water, macro</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-index="4" data-title="Diner, harsh window light" data-genre="Street" data-year="2018" data-note="6am, before the regulars arrived.">
+        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="300" height="300" fill="#050505"/>
+          <rect x="0" y="0" width="300" height="120" fill="#1a1a1a"/>
+          <rect x="40" y="0" width="60" height="120" fill="#c4c4c4" opacity=".8"/>
+          <rect x="150" y="0" width="60" height="120" fill="#868686" opacity=".55"/>
+          <rect x="0" y="120" width="300" height="14" fill="#222222"/>
+          <g fill="#242424"><rect x="20" y="150" width="40" height="60"/><rect x="80" y="150" width="40" height="60"/><rect x="140" y="150" width="40" height="60"/><rect x="200" y="150" width="40" height="60"/></g>
+        </svg>
+        <figcaption>05 — Diner, harsh window light</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-index="5" data-title="Mountain road, fog" data-genre="Travel" data-year="2022" data-note="Shot from the passenger seat, engine off.">
+        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="g6" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#cacaca"/><stop offset="35%" stop-color="#767676"/><stop offset="65%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#080808"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="300" fill="url(#g6)"/>
+          <path d="M150 40 C 130 110, 190 150, 140 210 S 170 300 150 300" fill="none" stroke="#e2e2e2" stroke-width="6" opacity=".5"/>
+        </svg>
+        <figcaption>06 — Mountain road, fog</figcaption>
+      </figure>
+
+      <figure class="grid-photo" tabindex="0" data-index="6" data-title="Vintage camera, studio" data-genre="BTS" data-year="2016" data-note="The camera that started all of this.">
+        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="g7" cx="50%" cy="42%" r="65%">
+              <stop offset="0%" stop-color="#9e9e9e"/><stop offset="55%" stop-color="#282828"/><stop offset="100%" stop-color="#020202"/>
+            </radialGradient>
+          </defs>
+          <rect width="300" height="300" fill="url(#g7)"/>
+          <rect x="118" y="128" width="64" height="42" rx="6" fill="#0a0a0a" opacity=".9"/>
+          <circle cx="150" cy="149" r="14" fill="#3a3a3a"/>
+        </svg>
+        <figcaption>07 — Vintage camera, studio</figcaption>
+      </figure>
+
+    </div>
+  </div>
+
+  <div class="panel" id="panel-contact">
+    <p class="eyebrow">Enquiries</p>
+    <h2>Let's make something.</h2>
+    <p class="lede">Open for commissions, editorial work, and print requests. Send a note below and I'll get back to you.</p>
+
+    <form id="contactForm">
+      <div class="field">
+        <label for="cname">Name</label>
+        <input id="cname" name="name" type="text" required autocomplete="name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label for="cmsg">Message</label>
+        <textarea id="cmsg" name="message" required placeholder="What are you shooting?"></textarea>
+      </div>
+      <button class="send-btn" type="submit">Send message</button>
+      <p class="confirm" id="confirm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Message received — I'll be in touch.
+      </p>
+    </form>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+  <div class="lightbox-backdrop" data-close></div>
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+    <div class="lightbox-media" id="lightboxMedia"></div>
+    <div class="lightbox-info">
+      <p class="lightbox-index" id="lightboxIndex">01 / 07</p>
+      <h3 id="lightboxTitle"></h3>
+      <dl class="lightbox-meta">
+        <div><dt>Genre</dt><dd id="lightboxGenre"></dd></div>
+        <div><dt>Year</dt><dd id="lightboxYear"></dd></div>
+        <div><dt>Notes</dt><dd id="lightboxNote"></dd></div>
+      </dl>
+      <div class="lightbox-nav">
+        <button type="button" id="lightboxPrev">‹ Prev</button>
+        <button type="button" id="lightboxNext">Next ›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="credit">callmejo · monochrome only, since 2016</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
