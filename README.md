@@ -7,7 +7,6 @@ A plain static site with no build step or dependencies:
 - `index.html` — page structure
 - `styles.css` — styling (responsive: 3 / 4 / 5 photos per row on mobile / tablet / desktop)
 - `script.js` — tabs, bio expand, share, photo lightbox, enquiry form
-- `intro.js` — the opening animation (camera zoom-out, camera placed in hand, circle drawn into the profile picture, typed name, dissolve into the site). It has a Skip button, can be dismissed with Esc, and is not shown to visitors who prefer reduced motion. Its images are `assets/intro/camera.png` and `assets/avatar.jpg`.
 
 Fonts (Fraunces, Work Sans, IBM Plex Mono) load from Google Fonts.
 
